@@ -11,29 +11,31 @@ export class App extends Component {
     neutral: 0,
     bad: 0,
   };
-
-  onLeaveFeedback = stateKey => {
-    if (stateKey === 'good') {
-      this.setState(prevState => ({
-        good: prevState.good + 1,
-      }));
-      return;
-    }
-
-    if (stateKey === 'neutral') {
-      this.setState(prevState => ({
-        neutral: prevState.neutral + 1,
-      }));
-      return;
-    }
-
-    if (stateKey === 'bad') {
-      this.setState(prevState => ({
-        bad: prevState.bad + 1,
-      }));
-      return;
-    }
+  onLeaveFeedback = key => {
+    this.setState(prevState => ({ [key]: prevState[key] + 1 }));
   };
+  // onLeaveFeedback = stateKey => {
+  //   if (stateKey === 'good') {
+  //     this.setState(prevState => ({
+  //       good: prevState.good + 1,
+  //     }));
+  //     return;
+  //   }
+
+  //   if (stateKey === 'neutral') {
+  //     this.setState(prevState => ({
+  //       neutral: prevState.neutral + 1,
+  //     }));
+  //     return;
+  //   }
+
+  //   if (stateKey === 'bad') {
+  //     this.setState(prevState => ({
+  //       bad: prevState.bad + 1,
+  //     }));
+  //     return;
+  //   }
+  // };
 
   countTotalFeedback = () => {
     const { good, neutral, bad } = this.state;
@@ -41,9 +43,9 @@ export class App extends Component {
   };
 
   countPositiveFeedbackPercentage = () => {
-    const positiveFeedback =
-      (this.state.good * 100) / this.countTotalFeedback();
-    return positiveFeedback;
+    // const positiveFeedback =
+     return (this.state.good * 100) / this.countTotalFeedback();
+    // return positiveFeedback;
   };
 
   render() {
